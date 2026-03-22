@@ -1,299 +1,233 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบสุริยะจำลอง (Solar System Simulation)</title>
+    <!-- โหลด jQuery จาก CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        /* รีเซ็ตค่าพื้นฐานและซ่อนแถบเลื่อน (Scrollbar) */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #050510; /* สีพื้นหลังอวกาศ */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-<title>รายงานวิชาเว็บไซต์</title>
-
-<!-- Bootstrap 5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<style>
-
-body{
-    font-family: "Sarabun", sans-serif;
-    background:#f5f6fa;
-}
-
-.navbar{
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-
-.hero{
-    background:linear-gradient(135deg,#0d6efd,#6610f2);
-    color:white;
-    padding:120px 0;
-}
-
-.section{
-    padding:80px 0;
-}
-
-.section-title{
-    font-weight:700;
-    margin-bottom:30px;
-}
-
-.card{
-    border:none;
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.footer{
-    background:#111;
-    color:#aaa;
-    padding:30px 0;
-}
-
-</style>
+        /* ตั้งค่า Canvas ให้เต็มหน้าจอ */
+        canvas {
+            display: block;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- Navbar -->
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-<div class="container">
-
-<a class="navbar-brand" href="#">Web Report</a>
-
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-<span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="menu">
-
-<ul class="navbar-nav ms-auto">
-
-<li class="nav-item"><a class="nav-link" href="#intro">บทนำ</a></li>
-<li class="nav-item"><a class="nav-link" href="#basic">พื้นฐาน</a></li>
-<li class="nav-item"><a class="nav-link" href="#component">องค์ประกอบ</a></li>
-<li class="nav-item"><a class="nav-link" href="#tech">เทคโนโลยี</a></li>
-<li class="nav-item"><a class="nav-link" href="#process">ขั้นตอน</a></li>
-
-</ul>
-
-</div>
-</div>
-</nav>
-
-
-<!-- Hero -->
-
-<section class="hero text-center">
-<div class="container">
-
-<h1 class="display-4 fw-bold">รายงานวิชาเว็บไซต์</h1>
-<p class="lead">การพัฒนาและการทำงานของเว็บไซต์</p>
-
-</div>
-</section>
-
-
-<!-- Intro -->
-
-<section id="intro" class="section">
-<div class="container">
-
-<h2 class="section-title text-center">บทนำ</h2>
-
-<div class="row justify-content-center">
-
-<div class="col-md-8">
-
-<p>
-เว็บไซต์เป็นเทคโนโลยีที่สำคัญในยุคดิจิทัล ใช้สำหรับเผยแพร่ข้อมูล การทำธุรกิจ
-และการสื่อสารผ่านอินเทอร์เน็ต ปัจจุบันองค์กรและบุคคลทั่วไปสามารถสร้างเว็บไซต์
-เพื่อแสดงข้อมูลหรือให้บริการออนไลน์ได้
-</p>
-
-</div>
-</div>
-</div>
-</section>
-
-
-<!-- Basic -->
-
-<section id="basic" class="section bg-light">
-<div class="container">
-
-<h2 class="section-title text-center">ความรู้พื้นฐานเกี่ยวกับเว็บไซต์</h2>
-
-<div class="row g-4">
-
-<div class="col-md-4">
-<div class="card p-4 h-100">
-<h5>Website</h5>
-<p>เว็บไซต์คือชุดของหน้าเว็บที่เชื่อมโยงกันและสามารถเข้าถึงผ่านอินเทอร์เน็ต</p>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="card p-4 h-100">
-<h5>Web Page</h5>
-<p>หน้าเว็บเพจคือเอกสาร HTML ที่แสดงผลผ่านเว็บเบราว์เซอร์</p>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="card p-4 h-100">
-<h5>Web Browser</h5>
-<p>โปรแกรมที่ใช้เปิดเว็บไซต์ เช่น Chrome, Edge, Firefox</p>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-
-<!-- Components -->
-
-<section id="component" class="section">
-<div class="container">
-
-<h2 class="section-title text-center">องค์ประกอบของเว็บไซต์</h2>
-
-<div class="row g-4">
-
-<div class="col-md-3">
-<div class="card p-4 text-center">
-<h5>Domain</h5>
-<p>ชื่อเว็บไซต์ เช่น example.com</p>
-</div>
-</div>
-
-<div class="col-md-3">
-<div class="card p-4 text-center">
-<h5>Hosting</h5>
-<p>พื้นที่เก็บไฟล์เว็บไซต์บนเซิร์ฟเวอร์</p>
-</div>
-</div>
-
-<div class="col-md-3">
-<div class="card p-4 text-center">
-<h5>Database</h5>
-<p>ระบบเก็บข้อมูล เช่น MySQL</p>
-</div>
-</div>
-
-<div class="col-md-3">
-<div class="card p-4 text-center">
-<h5>Server</h5>
-<p>เครื่องที่ให้บริการเว็บไซต์</p>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-
-<!-- Technology -->
-
-<section id="tech" class="section bg-light">
-<div class="container">
-
-<h2 class="section-title text-center">เทคโนโลยีที่ใช้พัฒนาเว็บไซต์</h2>
-
-<div class="row g-4">
-
-<div class="col-md-3">
-<div class="card p-4 text-center">
-<h5>HTML</h5>
-<p>โครงสร้างของหน้าเว็บ</p>
-</div>
-</div>
-
-<div class="col-md-3">
-<div class="card p-4 text-center">
-<h5>CSS</h5>
-<p>ใช้ตกแต่งและออกแบบหน้าเว็บ</p>
-</div>
-</div>
-
-<div class="col-md-3">
-<div class="card p-4 text-center">
-<h5>JavaScript</h5>
-<p>ทำให้เว็บมีการโต้ตอบ</p>
-</div>
-</div>
-
-<div class="col-md-3">
-<div class="card p-4 text-center">
-<h5>PHP</h5>
-<p>ภาษา backend สำหรับเว็บไซต์</p>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-
-<!-- Process -->
-
-<section id="process" class="section">
-<div class="container">
-
-<h2 class="section-title text-center">ขั้นตอนการสร้างเว็บไซต์</h2>
-
-<div class="row">
-
-<div class="col-md-10 mx-auto">
-
-<ol class="list-group list-group-numbered">
-
-<li class="list-group-item">วางแผนเว็บไซต์</li>
-<li class="list-group-item">ออกแบบหน้าเว็บ</li>
-<li class="list-group-item">พัฒนาเว็บไซต์</li>
-<li class="list-group-item">ทดสอบระบบ</li>
-<li class="list-group-item">เผยแพร่เว็บไซต์</li>
-
-</ol>
-
-</div>
-</div>
-</div>
-</section>
-
-
-<!-- Footer -->
-
-<footer class="footer text-center">
-<div class="container">
-
-<p>รายงานวิชาเว็บไซต์ | จัดทำโดย นักเรียน</p>
-
-</div>
-</footer>
-
-
-
-<!-- JS -->
-
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
-<script>
-
-$('a.nav-link').click(function(e){
-
-e.preventDefault();
-
-let target = $(this.hash);
-
-$('html,body').animate({
-scrollTop: target.offset().top - 70
-},600);
-
-});
-
-</script>
-
+    <!-- พื้นที่วาดกราฟิก Canvas -->
+    <canvas id="solarSystem"></canvas>
+
+    <script>
+        // เริ่มทำงานเมื่อเอกสารโหลดเสร็จสมบูรณ์ (ใช้ jQuery)
+        $(document).ready(function() {
+            const canvas = document.getElementById('solarSystem');
+            const ctx = canvas.getContext('2d');
+            
+            // ตัวแปรควบคุมความเร็วของเวลาและซูม
+            let timeScale = 0.2;
+            let zoomLevel = 1;
+
+            // อัปเดตขนาด Canvas ให้พอดีกับหน้าต่างเสมอ
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            
+            // จับ Event เมื่อหน้าต่างเปลี่ยนขนาดด้วย jQuery
+            $(window).on('resize', resizeCanvas);
+            resizeCanvas(); // เรียกใช้ครั้งแรกเพื่อตั้งค่าขนาด
+
+            // จับ Event การเลื่อนลูกกลิ้งเมาส์ (Mouse Wheel) เพื่อซูมเข้า/ออก
+            canvas.addEventListener('wheel', function(e) {
+                e.preventDefault(); // ป้องกันการเลื่อนหน้าเว็บ
+                const zoomFactor = 0.1;
+                if (e.deltaY < 0) {
+                    zoomLevel *= (1 + zoomFactor); // ซูมเข้า
+                } else {
+                    zoomLevel /= (1 + zoomFactor); // ซูมออก
+                }
+                // จำกัดระยะซูม เพื่อไม่ให้เล็กหรือใหญ่จนเกินไป
+                zoomLevel = Math.max(0.1, Math.min(zoomLevel, 10));
+            }, { passive: false });
+
+            // สร้างดาวฤกษ์พื้นหลัง (Background Stars)
+            const stars = [];
+            const numStars = 400;
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * window.innerWidth * 2 - window.innerWidth, // เผื่อระยะตอนซูมหรือเลื่อน
+                    y: Math.random() * window.innerHeight * 2 - window.innerHeight,
+                    radius: Math.random() * 1.5,
+                    alpha: Math.random(),
+                    twinkleSpeed: (Math.random() * 0.02) + 0.005
+                });
+            }
+
+            // ข้อมูลดาวเคราะห์ (ปรับขนาดและระยะห่างเพื่อให้แสดงผลบนจอได้สวยงาม ไม่ใช่อัตราส่วนจริง)
+            // angle: ตำแหน่งมุมเริ่มต้น, speed: ความเร็วในการโคจรรอบดวงอาทิตย์
+            const planets = [
+                { name: "พุธ", color: "#a8a8a8", radius: 4, distance: 60, speed: 0.04, angle: Math.random() * Math.PI * 2 },
+                { name: "ศุกร์", color: "#e3bb76", radius: 7, distance: 90, speed: 0.015, angle: Math.random() * Math.PI * 2 },
+                { name: "โลก", color: "#4b9fe3", radius: 8, distance: 130, speed: 0.01, angle: Math.random() * Math.PI * 2, hasMoon: true },
+                { name: "อังคาร", color: "#e27b58", radius: 6, distance: 170, speed: 0.008, angle: Math.random() * Math.PI * 2 },
+                { name: "พฤหัสบดี", color: "#c99f75", radius: 18, distance: 240, speed: 0.002, angle: Math.random() * Math.PI * 2 },
+                { name: "เสาร์", color: "#e3d599", radius: 14, distance: 310, speed: 0.0009, angle: Math.random() * Math.PI * 2, hasRings: true },
+                { name: "ยูเรนัส", color: "#82b3d1", radius: 10, distance: 370, speed: 0.0004, angle: Math.random() * Math.PI * 2 },
+                { name: "เนปจูน", color: "#3d5c99", radius: 10, distance: 420, speed: 0.0001, angle: Math.random() * Math.PI * 2 }
+            ];
+
+            // ฟังก์ชันวาดฉากหลังดาวระยิบระยับ
+            function drawStars(centerX, centerY) {
+                ctx.save();
+                // ไม่ต้อง translate ตามศูนย์กลางระบบสุริยะ เพื่อให้ดาวดูเต็มจอ
+                for (let i = 0; i < stars.length; i++) {
+                    let star = stars[i];
+                    
+                    // ทำให้ดาวกะพริบ
+                    star.alpha += star.twinkleSpeed;
+                    if (star.alpha > 1 || star.alpha < 0) {
+                        star.twinkleSpeed = -star.twinkleSpeed;
+                    }
+
+                    ctx.beginPath();
+                    // กระจายดาวให้ทั่วพื้นที่ (ชดเชยค่า translate จาก loop หลัก)
+                    ctx.arc(star.x + centerX, star.y + centerY, star.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(star.alpha)})`;
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+
+            // ฟังก์ชันหลักสำหรับวาดแอนิเมชัน
+            function animate() {
+                // ล้างหน้าจอในแต่ละเฟรม
+                ctx.fillStyle = 'rgba(5, 5, 16, 0.8)'; // ใช้ rgba เพื่อให้เกิด effect หางแสงจางๆ ตอนเคลื่อนที่
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // หาจุดกึ่งกลางหน้าจอ
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+
+                drawStars(centerX, centerY);
+
+            ctx.save();
+            ctx.translate(centerX, centerY); // ย้ายจุดอ้างอิง (0,0) ไปไว้ตรงกลางหน้าจอ
+
+            // ปรับสเกลเพื่อให้พอดีกับหน้าจอขนาดเล็กและรวมการซูมด้วย
+            const maxDistance = 450;
+            const minDimension = Math.min(canvas.width, canvas.height) / 2;
+            let baseScale = 1;
+            if (maxDistance > minDimension) {
+                baseScale = minDimension / maxDistance;
+            }
+            
+            // นำสเกลพื้นฐานมาคูณกับระดับการซูมของผู้ใช้
+            const finalScale = baseScale * zoomLevel;
+            ctx.scale(finalScale, finalScale);
+
+            // 1. วาดดวงอาทิตย์ (Sun)
+            ctx.beginPath();
+                ctx.arc(0, 0, 30, 0, Math.PI * 2);
+                
+                // สร้าง Gradient ให้ดวงอาทิตย์ดูมีมิติและเรืองแสง
+                let sunGradient = ctx.createRadialGradient(0, 0, 5, 0, 0, 45);
+                sunGradient.addColorStop(0, '#ffffff');
+                sunGradient.addColorStop(0.2, '#fff176');
+                sunGradient.addColorStop(0.8, '#ff8f00');
+                sunGradient.addColorStop(1, 'rgba(255, 143, 0, 0)'); // รัศมีแสง
+
+                ctx.fillStyle = sunGradient;
+                ctx.fill();
+
+                // 2. วาดดาวเคราะห์และวงโคจร
+                planets.forEach(planet => {
+                    // วาดเส้นวงโคจร (Orbit)
+                    ctx.beginPath();
+                    ctx.arc(0, 0, planet.distance, 0, Math.PI * 2);
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+
+                    // คำนวณตำแหน่ง X, Y ปัจจุบันของดาวเคราะห์
+                    const x = planet.distance * Math.cos(planet.angle);
+                    const y = planet.distance * Math.sin(planet.angle);
+
+                    // วาดวงแหวน (ถ้ามี เช่น ดาวเสาร์)
+                    if (planet.hasRings) {
+                        ctx.save();
+                        ctx.translate(x, y);
+                        // เอียงวงแหวนนิดหน่อย
+                        ctx.rotate(Math.PI / 6); 
+                        ctx.beginPath();
+                        ctx.ellipse(0, 0, planet.radius * 2.2, planet.radius * 0.8, 0, 0, Math.PI * 2);
+                        ctx.strokeStyle = 'rgba(227, 213, 153, 0.6)';
+                        ctx.lineWidth = 3;
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.ellipse(0, 0, planet.radius * 2.6, planet.radius * 1.1, 0, 0, Math.PI * 2);
+                        ctx.strokeStyle = 'rgba(227, 213, 153, 0.3)';
+                        ctx.lineWidth = 2;
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+
+                    // วาดดวงจันทร์ (สำหรับโลก)
+                    if (planet.hasMoon) {
+                        const moonDistance = planet.radius + 6;
+                        // ให้ดวงจันทร์หมุนเร็วกว่าโลก 12 เท่า
+                        const moonAngle = planet.angle * 12; 
+                        const moonX = x + moonDistance * Math.cos(moonAngle);
+                        const moonY = y + moonDistance * Math.sin(moonAngle);
+                        
+                        ctx.beginPath();
+                        ctx.arc(moonX, moonY, 2, 0, Math.PI * 2);
+                        ctx.fillStyle = '#ffffff';
+                        ctx.fill();
+                    }
+
+                    // วาดตัวดาวเคราะห์
+                    ctx.beginPath();
+                    ctx.arc(x, y, planet.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = planet.color;
+                    // เพิ่มเงาให้ดูเป็นทรงกลม
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = planet.color;
+                    ctx.fill();
+                    ctx.shadowBlur = 0; // รีเซ็ตเงา
+
+                    // วาดชื่อดาวเคราะห์
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                    ctx.font = '10px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(planet.name, x, y - planet.radius - 8);
+
+                    // อัปเดตมุม (Angle) สำหรับเฟรมถัดไป เพื่อให้ดาวเคลื่อนที่
+                    // คูณด้วย timeScale จาก Slider แผงควบคุม
+                    planet.angle += planet.speed * timeScale;
+                });
+
+                ctx.restore(); // คืนค่าแกน (0,0) กลับไปที่มุมซ้ายบนของจอ
+
+                // เรียกใช้แอนิเมชันเฟรมถัดไปวนลูปไปเรื่อยๆ
+                requestAnimationFrame(animate);
+            }
+
+            // เริ่มแอนิเมชัน
+            animate();
+        });
+    </script>
 </body>
 </html>
