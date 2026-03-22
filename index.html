@@ -1,11 +1,299 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-<title>My Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>รายงานวิชาเว็บไซต์</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+    font-family: "Sarabun", sans-serif;
+    background:#f5f6fa;
+}
+
+.navbar{
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.hero{
+    background:linear-gradient(135deg,#0d6efd,#6610f2);
+    color:white;
+    padding:120px 0;
+}
+
+.section{
+    padding:80px 0;
+}
+
+.section-title{
+    font-weight:700;
+    margin-bottom:30px;
+}
+
+.card{
+    border:none;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.footer{
+    background:#111;
+    color:#aaa;
+    padding:30px 0;
+}
+
+</style>
 </head>
+
 <body>
-<h1>ยินดีต้อนรับสู่เว็บไซต์ของฉัน</h1>
-<p>นี่คือเว็บไซต์ตัวอย่าง</p>
-<p>---------------------------</p>
+
+<!-- Navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<div class="container">
+
+<a class="navbar-brand" href="#">Web Report</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item"><a class="nav-link" href="#intro">บทนำ</a></li>
+<li class="nav-item"><a class="nav-link" href="#basic">พื้นฐาน</a></li>
+<li class="nav-item"><a class="nav-link" href="#component">องค์ประกอบ</a></li>
+<li class="nav-item"><a class="nav-link" href="#tech">เทคโนโลยี</a></li>
+<li class="nav-item"><a class="nav-link" href="#process">ขั้นตอน</a></li>
+
+</ul>
+
+</div>
+</div>
+</nav>
+
+
+<!-- Hero -->
+
+<section class="hero text-center">
+<div class="container">
+
+<h1 class="display-4 fw-bold">รายงานวิชาเว็บไซต์</h1>
+<p class="lead">การพัฒนาและการทำงานของเว็บไซต์</p>
+
+</div>
+</section>
+
+
+<!-- Intro -->
+
+<section id="intro" class="section">
+<div class="container">
+
+<h2 class="section-title text-center">บทนำ</h2>
+
+<div class="row justify-content-center">
+
+<div class="col-md-8">
+
+<p>
+เว็บไซต์เป็นเทคโนโลยีที่สำคัญในยุคดิจิทัล ใช้สำหรับเผยแพร่ข้อมูล การทำธุรกิจ
+และการสื่อสารผ่านอินเทอร์เน็ต ปัจจุบันองค์กรและบุคคลทั่วไปสามารถสร้างเว็บไซต์
+เพื่อแสดงข้อมูลหรือให้บริการออนไลน์ได้
+</p>
+
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- Basic -->
+
+<section id="basic" class="section bg-light">
+<div class="container">
+
+<h2 class="section-title text-center">ความรู้พื้นฐานเกี่ยวกับเว็บไซต์</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="card p-4 h-100">
+<h5>Website</h5>
+<p>เว็บไซต์คือชุดของหน้าเว็บที่เชื่อมโยงกันและสามารถเข้าถึงผ่านอินเทอร์เน็ต</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-4 h-100">
+<h5>Web Page</h5>
+<p>หน้าเว็บเพจคือเอกสาร HTML ที่แสดงผลผ่านเว็บเบราว์เซอร์</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-4 h-100">
+<h5>Web Browser</h5>
+<p>โปรแกรมที่ใช้เปิดเว็บไซต์ เช่น Chrome, Edge, Firefox</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- Components -->
+
+<section id="component" class="section">
+<div class="container">
+
+<h2 class="section-title text-center">องค์ประกอบของเว็บไซต์</h2>
+
+<div class="row g-4">
+
+<div class="col-md-3">
+<div class="card p-4 text-center">
+<h5>Domain</h5>
+<p>ชื่อเว็บไซต์ เช่น example.com</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-4 text-center">
+<h5>Hosting</h5>
+<p>พื้นที่เก็บไฟล์เว็บไซต์บนเซิร์ฟเวอร์</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-4 text-center">
+<h5>Database</h5>
+<p>ระบบเก็บข้อมูล เช่น MySQL</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-4 text-center">
+<h5>Server</h5>
+<p>เครื่องที่ให้บริการเว็บไซต์</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- Technology -->
+
+<section id="tech" class="section bg-light">
+<div class="container">
+
+<h2 class="section-title text-center">เทคโนโลยีที่ใช้พัฒนาเว็บไซต์</h2>
+
+<div class="row g-4">
+
+<div class="col-md-3">
+<div class="card p-4 text-center">
+<h5>HTML</h5>
+<p>โครงสร้างของหน้าเว็บ</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-4 text-center">
+<h5>CSS</h5>
+<p>ใช้ตกแต่งและออกแบบหน้าเว็บ</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-4 text-center">
+<h5>JavaScript</h5>
+<p>ทำให้เว็บมีการโต้ตอบ</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card p-4 text-center">
+<h5>PHP</h5>
+<p>ภาษา backend สำหรับเว็บไซต์</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- Process -->
+
+<section id="process" class="section">
+<div class="container">
+
+<h2 class="section-title text-center">ขั้นตอนการสร้างเว็บไซต์</h2>
+
+<div class="row">
+
+<div class="col-md-10 mx-auto">
+
+<ol class="list-group list-group-numbered">
+
+<li class="list-group-item">วางแผนเว็บไซต์</li>
+<li class="list-group-item">ออกแบบหน้าเว็บ</li>
+<li class="list-group-item">พัฒนาเว็บไซต์</li>
+<li class="list-group-item">ทดสอบระบบ</li>
+<li class="list-group-item">เผยแพร่เว็บไซต์</li>
+
+</ol>
+
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- Footer -->
+
+<footer class="footer text-center">
+<div class="container">
+
+<p>รายงานวิชาเว็บไซต์ | จัดทำโดย นักเรียน</p>
+
+</div>
+</footer>
+
+
+
+<!-- JS -->
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+
+$('a.nav-link').click(function(e){
+
+e.preventDefault();
+
+let target = $(this.hash);
+
+$('html,body').animate({
+scrollTop: target.offset().top - 70
+},600);
+
+});
+
+</script>
+
 </body>
 </html>
